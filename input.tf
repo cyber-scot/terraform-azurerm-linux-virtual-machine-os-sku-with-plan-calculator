@@ -1,34 +1,24 @@
-variable "identity_ids" {
-  description = "Specifies a list of user managed identity ids to be assigned to the VM."
-  type        = list(string)
-  default     = []
-}
-
-variable "identity_type" {
-  description = "The Managed Service Identity Type of this Virtual Machine."
-  type        = string
-  default     = ""
-}
-
-variable "location" {
-  description = "The location for this resource to be put in"
-  type        = string
-}
-
-variable "rg_name" {
-  description = "The name of the resource group, this module does not create a resource group, it is expecting the value of a resource group already exists"
-  type        = string
-  validation {
-    condition     = length(var.rg_name) > 1 && length(var.rg_name) <= 24
-    error_message = "Resource group name is not valid."
-  }
-}
-
-variable "tags" {
-  type        = map(string)
-  description = "A map of the tags to use on the resources that are deployed with this module."
-
+variable "standard_os" {
   default = {
-    source = "terraform"
+    "CISCentOS7L1"      = "center-for-internet-security-inc,cis-centos-7-v2-1-1-l1,cis-centos7-l1"
+    "CISCentOS8L1"      = "center-for-internet-security-inc,cis-centos-8-l1,cis-centos8-l1"
+    "CISDebian9L1"      = "center-for-internet-security-inc,cis-debian-linux-9-l1,cis-debian9-l1"
+    "CISDebian10L1"     = "center-for-internet-security-inc,cis-debian-linux-10-l1,cis-debian10-l1"
+    "CISOracleLinux7L1" = "center-for-internet-security-inc,cis-oracle-linux-7-v2-0-0-l1,cis-oracle7-l1-for-cis"
+    "CISOracleLinux8L1" = "center-for-internet-security-inc,cis-oracle-linux-8-l1,cis-oracle8-l1"
+    "CISRHEL7L1"        = "center-for-internet-security-inc,cis-rhel-7-v2-2-0-l1,cis-rhel7-l1"
+    "CISRHEL7L2"        = "center-for-internet-security-inc,cis-rhel-7-l2,cis-rhel7-l2"
+    "CISRHEL8L1"        = "center-for-internet-security-inc,cis-rhel-8-l1,cis-rhel8-l1"
+    "CISRHEL8L2"        = "center-for-internet-security-inc,cis-rhel-8-l2,cis-rhel8-l2"
+    "CISSUSE15L1"       = "center-for-internet-security-inc,cis-suse15-l1,cis-suse15-l1"
+    "CISUbuntu18.04L1"  = "center-for-internet-security-inc,cis-ubuntu-linux-1804-l1,cis-ubuntu1804-l1"
+    "CISUbuntu20.04L1"  = "center-for-internet-security-inc,cis-ubuntu-linux-2004-l1,cis-ubuntu2004-l1"
   }
 }
+
+variable "vm_os_simple" {
+  default     = ""
+  description = "If using this module, pass one of the keys as the variable to get that image properties"
+}
+
+# Definition of the standard OS with "SimpleName" = "publisher,offer,sku", this can have many more skus added to it
