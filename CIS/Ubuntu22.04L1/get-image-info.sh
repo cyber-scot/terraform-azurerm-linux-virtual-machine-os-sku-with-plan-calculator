@@ -2,7 +2,7 @@
 
 LOCATION="uksouth"
 PUBLISHER="center-for-internet-security-inc"
-OFFER="cis-ubuntu-linux-2204-l1"
+OFFER="cis-ubuntu-linux-2004-l1"
 VERSION="Latest"
 SKU="cis-ubuntu2004-l1"
 
